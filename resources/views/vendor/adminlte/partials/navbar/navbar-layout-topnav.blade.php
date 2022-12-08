@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('funcionario.index') }}"
+                    <a href="{{ route('vacina.index') }}"
                         class="nav-link @if ($currentRoute === 'funcionario.index') active @endif">
                         <p>
                             Vacinas

@@ -56,7 +56,7 @@
                         </span>
                     </div>
                     <div>
-                        <span title="CPF">
+                        <span title="Comorbidade">
                             <b class="text-primary">Comorbidade</b>
                             {{ $funcionario->comorbidade() }}
                         </span>

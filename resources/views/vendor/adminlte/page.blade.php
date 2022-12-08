@@ -15,14 +15,14 @@
     <div class="wrapper">
 
         {{-- Top Navbar --}}
-        @if($layoutHelper->isLayoutTopnavEnabled())
+        @if ($layoutHelper->isLayoutTopnavEnabled())
             @include('adminlte::partials.navbar.navbar-layout-topnav')
         @else
             @include('adminlte::partials.navbar.navbar')
         @endif
 
         {{-- Left Main Sidebar --}}
-        @if(!$layoutHelper->isLayoutTopnavEnabled())
+        @if (!$layoutHelper->isLayoutTopnavEnabled())
             @include('adminlte::partials.sidebar.left-sidebar')
         @endif
 
@@ -37,12 +37,13 @@
             <div class="float-right d-none d-sm-block">
                 <b>Versão</b> 1
             </div>
-            <strong>Copyright © 2014-2021 <a href="https://www.uema.br/">UEMA</a>.</strong> Todos direitos reservados.
+            <strong>Copyright © 2022 <a href="https://github.com/AntonioLuisP">Antônio</a>.</strong> Todos direitos
+            reservados.
         </footer>
-        
-            
+
+
         {{-- Right Control Sidebar --}}
-        @if(config('adminlte.right_sidebar'))
+        @if (config('adminlte.right_sidebar'))
             @include('adminlte::partials.sidebar.right-sidebar')
         @endif
 
