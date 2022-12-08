@@ -2,10 +2,10 @@
 
 @section('content_header')
     @include('utils.layout.contentHeader', [
-        'title' => 'Funcionário',
+        'title' => 'Vacina',
         'items' => [
-            'Funcionários' => route('funcionario.index'),
-            'Funcionário' => null,
+            'Vacinas' => route('vacina.index'),
+            'Vacina' => null,
         ],
     ])
 @stop
@@ -17,20 +17,19 @@
                 <div class="card-header pb-0 border-bottom-0">
                     <div class="d-flex align-items-center justify-content-between">
                         <h3 class="card-title text-muted">
-                            Funcionário
+                            Vacina
                         </h3>
                         <div class="card-tools">
-                            <a href="{{ route('funcionario.edit', ['funcionario' => $funcionario->id]) }}"
-                                class="btn btn-sm btn-warning" title="Editar">
+                            <a href="{{ route('vacina.edit', ['vacina' => $vacina->id]) }}" class="btn btn-sm btn-warning"
+                                title="Editar">
                                 <i class="fa fa-pen"> </i>
                             </a>
                             <button class="btn btn-sm btn-danger" type="submit" title="Excluir"
-                                onclick="document.getElementById('formDelete{{ $funcionario->id }}').submit()">
+                                onclick="document.getElementById('formDelete{{ $vacina->id }}').submit()">
                                 <i class="fa fa-trash"> </i>
                             </button>
-                            <form id="formDelete{{ $funcionario->id }}"
-                                action="{{ route('funcionario.destroy', ['funcionario' => $funcionario->id]) }}"
-                                method="POST">
+                            <form id="formDelete{{ $vacina->id }}"
+                                action="{{ route('vacina.destroy', ['vacina' => $vacina->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                             </form>
@@ -40,25 +39,19 @@
                 <div class="card-body pt-0">
                     <div class="mt-2">
                         <h3>
-                            {{ $funcionario->nome_completo }}
+                            {{ $vacina->nome }}
                         </h3>
                     </div>
                     <div>
-                        <span title="CPF">
-                            <b class="text-primary">CPF</b>
-                            {{ $funcionario->cpf() }}
+                        <span title="Lote">
+                            <b class="text-primary">Lote</b>
+                            {{ $vacina->lote }}
                         </span>
                     </div>
                     <div>
-                        <span title="Comorbidade">
-                            <b class="text-primary">Comorbidade</b>
-                            {{ $funcionario->comorbidade() }}
-                        </span>
-                    </div>
-                    <div>
-                        <span title="Nascido em:">
+                        <span title="Validade em:">
                             <i class="fa fa-calendar mr-2 text-primary"></i>
-                            {{ $funcionario->data_nascimento }}
+                            {{ $vacina->data_validade }}
                         </span>
                     </div>
                 </div>
@@ -72,8 +65,8 @@
                             Vacinas
                         </h3>
                         <div class="card-tools">
-                            <a href="{{ route('funcionario.vacinas', ['funcionario' => $funcionario->id]) }}"
-                                class="btn btn-sm btn-warning " title="Atribuir vacinas ao funcionario">
+                            <a href="{{ route('vacina.vacinas', ['vacina' => $vacina->id]) }}"
+                                class="btn btn-sm btn-warning " title="Atribuir vacinas ao vacina">
                                 Adicionar Vacina
                             </a>
                         </div>

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class FuncionarioRequest extends FormRequest
+class VacinaRequest extends FormRequest
 {
     public function authorize()
     {
