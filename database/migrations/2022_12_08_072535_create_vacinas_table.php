@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFuncionariosTable extends Migration
+class CreateVacinasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateFuncionariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('funcionarios', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nome_completo');
-            $table->string('cpf')->unique();
-            $table->date('data_nascimento');
-            $table->boolean('tem_comorbidade')->default(false);
+        Schema::create('vacinas', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateFuncionariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionarios');
+        Schema::dropIfExists('vacinas');
     }
 }

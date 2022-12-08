@@ -12,6 +12,7 @@ class Funcionario extends BaseModel
         'nome_completo',
         'cpf',
         'data_nascimento',
+        'tem_comorbidade',
     ];
 
     protected $itensUpperCase = [];
@@ -21,9 +22,18 @@ class Funcionario extends BaseModel
         'cpf' => 'like',
     ];
 
+    protected $casts = [
+        'tem_comorbidade' => 'boolean',
+    ];
+
     public function cpf()
     {
         return substr($this->cpf, 0, 5) . '...';
+    }
+
+    public function comorbidade()
+    {
+        return $this->tem_comorbidade ? 'Sim' : 'Não';
     }
 
     public function vacinas()

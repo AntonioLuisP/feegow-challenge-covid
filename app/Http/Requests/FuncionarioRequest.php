@@ -22,7 +22,8 @@ class FuncionarioRequest extends FormRequest
                 'size:11',
                 Rule::unique('funcionarios', 'cpf')->ignore($this->funcionario ?? null, 'id')
             ],
-            'data_nascimento' => ['required', 'date']
+            'data_nascimento' => ['required', 'date'],
+            'tem_comorbidade' => ['required', 'boolean']
         ];
     }
 }

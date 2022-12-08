@@ -18,7 +18,7 @@ return [
         'string' => 'Este campo deve ter entre :min e :max caracteres',
         'array' => 'The :attribute must have between :min and :max items',
     ],
-    'boolean' => 'The :attribute field must be true or false',
+    'boolean' => 'O campo deve ser verdadeiro ou falso',
     'confirmed' => 'Os campos não coincidem',
     'date' => 'Este campo só pode conter datas',
     'date_equals' => 'The :attribute must be a date equal to :date',

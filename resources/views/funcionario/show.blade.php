@@ -55,6 +55,12 @@
                             {{ $funcionario->data_nascimento }}
                         </span>
                     </div>
+                    <div>
+                        <span title="CPF">
+                            <b class="text-primary">Comorbidade</b>
+                            {{ $funcionario->comorbidade() }}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

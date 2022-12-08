@@ -23,6 +23,7 @@
                 <tr>
                     <th>Nome: </th>
                     <th>CPF: </th>
+                    <th>Tem Comorbidade: </th>
                     <th>Nascido em: </th>
                     <th style="width: 50px; text-align: center;">Ações</th>
                 </tr>
@@ -30,6 +31,7 @@
                     <tr>
                         <td>{{ $funcionario->nome_completo }} </td>
                         <td>{{ $funcionario->cpf() }} </td>
+                        <td>{{ $funcionario->comorbidade() }} </td>
                         <td>{{ $funcionario->data_nascimento }} </td>
                         <td class="text-center">
                             <div class="btn-group">
