@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
 use App\Models\Vacina;
+use App\Models\VacinasAplicadas;
 
 class HomeController extends Controller
 {
@@ -11,10 +12,10 @@ class HomeController extends Controller
     {
         $qtd_funcionarios = Funcionario::count();
         $qtd_vacinas = Vacina::count();
-        $qtd_funcionarios_vacinados = Funcionario::count();
-        $qtd_funcionarios_nao_vacinados = Funcionario::count();
-        $vacinas = Vacina::all();
+        $qtd_vacinas_aplicadas = VacinasAplicadas::count();
+        $qtd_funcionarios_nao_vacinados = Funcionario::doesntHave('aplicacoes')->count();
+        $aplicacoes = VacinasAplicadas::orderBy('data_aplicacao', 'desc')->take(5)->get();
 
-        return view('home', compact('qtd_funcionarios', 'qtd_vacinas', 'qtd_funcionarios_vacinados', 'qtd_funcionarios_nao_vacinados', 'vacinas'));
+        return view('home', compact('qtd_funcionarios', 'qtd_vacinas', 'qtd_vacinas_aplicadas', 'qtd_funcionarios_nao_vacinados', 'aplicacoes'));
     }
 }

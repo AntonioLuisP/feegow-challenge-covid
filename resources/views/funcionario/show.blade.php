@@ -2,7 +2,7 @@
 
 @section('content_header')
     @include('utils.layout.contentHeader', [
-        'title' => 'Funcionário',
+        'title' => 'Funcionário e suas Vacinas',
         'items' => [
             'Funcionários' => route('funcionario.index'),
             'Funcionário' => null,
@@ -45,13 +45,13 @@
                     </div>
                     <div>
                         <span title="CPF">
-                            <b class="text-primary">CPF</b>
+                            <b class="text-primary">CPF: </b>
                             {{ $funcionario->cpf() }}
                         </span>
                     </div>
                     <div>
                         <span title="Comorbidade">
-                            <b class="text-primary">Comorbidade</b>
+                            <b class="text-primary">Comorbidade: </b>
                             {{ $funcionario->comorbidade() }}
                         </span>
                     </div>
@@ -61,38 +61,29 @@
                             {{ $funcionario->data_nascimento }}
                         </span>
                     </div>
+                    <div>
+                        <span title="Aplicações">
+                            <b class="text-primary">Aplicações: </b>
+                            {{ $aplicacoes->count() }}
+                        </span>
+                    </div>
                 </div>
             </div>
+            <a href="{{ route('aplicacao.create', ['funcionario' => $funcionario->id]) }}"
+                class="btn btn-block btn-warning " title="Atribuir vacinas ao funcionario">
+                Adicionar Vacina
+            </a>
         </div>
         <div class="col-md-9">
-            {{-- <div class="card">
-                <div class="card-header pb-0 border-bottom-0">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h3 class="card-title text-muted">
-                            Vacinas
-                        </h3>
-                        <div class="card-tools">
-                            <a href="{{ route('funcionario.vacinas', ['funcionario' => $funcionario->id]) }}"
-                                class="btn btn-sm btn-warning " title="Atribuir vacinas ao funcionario">
-                                Adicionar Vacina
-                            </a>
-                        </div>
+            <div class="row">
+                @forelse ($aplicacoes as $aplicacao)
+                    <div class="col-sm-4">
+                        @include('aplicacao.cardVacina')
                     </div>
-                </div>
-                <div class="card-body pt-2">
-                    <div class="row">
-                        @forelse ($vacinas as $vacina)
-                            <div class="col-sm-3">
-                                <a title="vacina" href="{{ route('vacina.show', ['vacina' => $vacina->id]) }}">
-                                    {{ $vacina->nome }}
-                                </a>
-                            </div>
-                        @empty
-                            <div class="col-sm-12">Nenhuma vacina atribuído</div>
-                        @endforelse
-                    </div>
-                </div>
-            </div> --}}
+                @empty
+                    <div class="col-sm-12">Nenhuma Vacina informada</div>
+                @endforelse
+            </div>
         </div>
     </div>
 @stop

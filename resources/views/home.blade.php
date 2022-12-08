@@ -39,11 +39,11 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
-                <a href="{{ route('funcionario.index') }}">
+                <a href="{{ route('aplicacao.index') }}">
                     <div class="small-box bg-teal">
                         <div class="inner">
-                            <h3>{{ $qtd_funcionarios_vacinados }}</h3>
-                            <p>Funcionários Vacinados</p>
+                            <h3>{{ $qtd_vacinas_aplicadas }}</h3>
+                            <p>Vacinas Aplicadas</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-user-shield"></i>
@@ -52,9 +52,9 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
-                <a href="{{ route('funcionario.index') }}">
+                <a href="{{ route('funcionario.naoVacinados') }}">
                     <div class="small-box bg-warning">
-                        <div class="inner">
+                        <div class="inner  text-white">
                             <h3>{{ $qtd_funcionarios_nao_vacinados }}</h3>
                             <p>Funcionários Não Vacinados</p>
                         </div>
@@ -66,35 +66,44 @@
             </div>
         </div>
         <h4 class="">
-            Ultimas Vacinas Aplicadas
+            Últimas Vacinas Aplicadas
         </h4>
-        {{-- <div class="card">
+        <div class="card">
             <div class="card-body table-responsive p-0">
                 <table class="table table-bordered table-hover table-sm">
                     <thead>
                         <th>Funcionario:</th>
-                        <th>Vacina:</th>
-                        <th>Aplicado em:</th>
+                        <th>Vacina / Lote:</th>
+                        <th style="width: 160px">Aplicado em:</th>
                         <th></th>
                     </thead>
                     <tbody>
                         @foreach ($aplicacoes as $aplicacao)
                             <tr>
                                 <td>{{ $aplicacao->funcionario->nome_completo }} </td>
-                                <td>{{ $aplicacao->vacina->nome }} </td>
+                                <td>{{ $aplicacao->vacina->nome }} / {{ $aplicacao->vacina->lote }} </td>
                                 <td>{{ $aplicacao->data_aplicacao }} </td>
-                                <td style="width: 40px">
-                                    <a href="{{ route('funcionario.show', ['funcionario' => $aplicacao->funcionario->id]) }}"
-                                        class="btn btn-sm btn-info" title="Ver">
-                                        <i class="fa fa-search"></i>
-                                    </a>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a href="{{ route('funcionario.show', ['funcionario' => $aplicacao->funcionario_id]) }}"
+                                            class="btn btn-sm btn-info" title="Ver">
+                                            Funcionário
+                                        </a>
+                                        <a href="{{ route('vacina.show', ['vacina' => $aplicacao->vacina_id]) }}"
+                                            class="btn btn-sm btn-warning" title="Ver">
+                                            Vacina
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-        </div> --}}
+        </div>
+        @if ($aplicacoes->count() <= 0)
+            <p>Nenhum dado encontrado.</p>
+        @endif
     @else
         <div class="card">
             <div class="card-header">{{ __('Dashboard') }}</div>
@@ -108,5 +117,4 @@
             </div>
         </div>
     @endauth
-
 @endsection

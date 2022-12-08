@@ -2,7 +2,7 @@
 
 @section('content_header')
     @include('utils.layout.contentHeader', [
-        'title' => 'Vacina',
+        'title' => 'Vacina e Funcionários Vacinados',
         'items' => [
             'Vacinas' => route('vacina.index'),
             'Vacina' => null,
@@ -44,7 +44,7 @@
                     </div>
                     <div>
                         <span title="Lote">
-                            <b class="text-primary">Lote</b>
+                            <b class="text-primary">Lote: </b>
                             {{ $vacina->lote }}
                         </span>
                     </div>
@@ -54,38 +54,25 @@
                             {{ $vacina->data_validade }}
                         </span>
                     </div>
+                    <div>
+                        <span title="Aplicações">
+                            <b class="text-primary">Aplicações: </b>
+                            {{ $aplicacoes->count() }}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-9">
-            {{-- <div class="card">
-                <div class="card-header pb-0 border-bottom-0">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h3 class="card-title text-muted">
-                            Vacinas
-                        </h3>
-                        <div class="card-tools">
-                            <a href="{{ route('vacina.vacinas', ['vacina' => $vacina->id]) }}"
-                                class="btn btn-sm btn-warning " title="Atribuir vacinas ao vacina">
-                                Adicionar Vacina
-                            </a>
-                        </div>
+            <div class="row">
+                @forelse ($aplicacoes as $aplicacao)
+                    <div class="col-sm-4">
+                        @include('aplicacao.cardFuncionario')
                     </div>
-                </div>
-                <div class="card-body pt-2">
-                    <div class="row">
-                        @forelse ($vacinas as $vacina)
-                            <div class="col-sm-3">
-                                <a title="vacina" href="{{ route('vacina.show', ['vacina' => $vacina->id]) }}">
-                                    {{ $vacina->nome }}
-                                </a>
-                            </div>
-                        @empty
-                            <div class="col-sm-12">Nenhuma vacina atribuído</div>
-                        @endforelse
-                    </div>
-                </div>
-            </div> --}}
+                @empty
+                    <div class="col-sm-12">Nenhum Funcionário Vacinado para esta Vacina</div>
+                @endforelse
+            </div>
         </div>
     </div>
 @stop

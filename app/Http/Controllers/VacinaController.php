@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VacinaRequest;
 use App\Models\Vacina;
+use App\Models\VacinasAplicadas;
 use App\Repositories\VacinaRepository;
 use Illuminate\Http\Request;
 
@@ -29,8 +30,8 @@ class VacinaController extends Controller
 
     public function show(Vacina $vacina)
     {
-        // $funcionarios = $vacina->funcionarios()->orderBy('nome', 'asc')->get();
-        return view($this::ITEM . '.show', compact('vacina'));
+        $aplicacoes = VacinasAplicadas::with('vacina')->where('vacina_id', $vacina->id)->orderBy('data_aplicacao')->get();
+        return view($this::ITEM . '.show', compact('vacina', 'aplicacoes'));
     }
 
     public function create()

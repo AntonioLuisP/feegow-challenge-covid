@@ -36,8 +36,13 @@ class Funcionario extends BaseModel
         return $this->tem_comorbidade ? 'Sim' : 'Não';
     }
 
+    public function aplicacoes()
+    {
+        return $this->hasMany(VacinasAplicadas::class, 'funcionario_id', 'id');
+    }
+
     public function vacinas()
     {
-        return $this->belongsToMany(Vacina::class, 'funcionarios_vacinas', 'id_funcionario', 'id_vacina')->withPivot('data_aplicacao');
+        return $this->belongsToMany(Vacina::class, 'vacinas_aplicadas', 'funcionario_id', 'vacina_id')->withPivot('data_aplicacao');
     }
 }

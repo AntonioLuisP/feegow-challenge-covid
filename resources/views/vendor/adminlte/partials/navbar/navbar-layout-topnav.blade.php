@@ -41,6 +41,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('aplicacao.index') }}"
+                        class="nav-link @if ($currentRoute === 'funcionario.index') active @endif">
+                        <p>
+                            Aplicações
+                        </p>
+                    </a>
+                </li>
                 {{-- Custom left links --}}
                 @yield('content_top_nav_left')
             </ul>

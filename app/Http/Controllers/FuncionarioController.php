@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FuncionarioRequest;
-use App\Models\Curso;
+use App\Models\VacinasAplicadas;
 use App\Models\Funcionario;
 use App\Repositories\FuncionarioRepository;
 use Illuminate\Http\Request;
@@ -28,10 +28,16 @@ class FuncionarioController extends Controller
         return view($this::ITEM . '.index', ['funcionarios' => $funcionarios, 'links' => $links]);
     }
 
+    public function naoVacinados(Request $request)
+    {
+        $funcionarios = Funcionario::doesntHave('aplicacoes')->get();
+        return view($this::ITEM . '.naoVacinados', ['funcionarios' => $funcionarios]);
+    }
+
     public function show(Funcionario $funcionario)
     {
-        // $vacinas = $funcionario->vacinas()->orderBy('nome', 'asc')->get();
-        return view($this::ITEM . '.show', compact('funcionario'));
+        $aplicacoes = VacinasAplicadas::with('vacina')->where('funcionario_id', $funcionario->id)->orderBy('data_aplicacao')->get();
+        return view($this::ITEM . '.show', compact('funcionario', 'aplicacoes'));
     }
 
     public function create()
@@ -55,28 +61,6 @@ class FuncionarioController extends Controller
         $this->repository->update($request->validated(), $funcionario->id);
         return redirect()->route($this::ITEM . '.show', ['funcionario' => $funcionario]);
     }
-
-    // public function vacinas(Funcionario $funcionario)
-    // {
-    //     $vacinas = Curso::select('id', 'nome')
-    //         ->withCount(['funcionarios' => function ($query) use ($funcionario) {
-    //             $query->where('funcionarios.id', $funcionario->id);
-    //         }])
-    //         ->orderBy('nome', 'asc')
-    //         ->get();
-    //     return view($this::ITEM . '.atribuirvacinas', compact('funcionario', 'vacinas'));
-    // }
-
-    // public function updatevacinas(Funcionario $funcionario, Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'vacinas' => ['nullable', 'array', 'exists:vacinas,id'],
-    //     ]);
-
-    //     $funcionario->vacinas()->sync($validated['vacinas'] ?? []);
-
-    //     return redirect()->route($this::ITEM . '.show', ['funcionario' => $funcionario]);
-    // }
 
     public function destroy(Funcionario $funcionario)
     {

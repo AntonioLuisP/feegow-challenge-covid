@@ -21,8 +21,13 @@ class Vacina extends BaseModel
         'lote' => 'like',
     ];
 
+    public function aplicacoes()
+    {
+        return $this->hasMany(VacinasAplicadas::class, 'funcionario_id', 'id');
+    }
+
     public function funcionarios()
     {
-        return $this->belongsToMany(ModelsFuncionario::class, 'funcionarios_vacinas', 'vacina_id', 'funcionairo_id')->withPivot('data_aplicacao');
+        return $this->belongsToMany(Funcionario::class, 'vacinas_aplicadas', 'vacina_id', 'funcionairo_id')->withPivot('data_aplicacao');
     }
 }
