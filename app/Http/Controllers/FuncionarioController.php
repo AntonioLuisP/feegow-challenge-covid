@@ -36,7 +36,7 @@ class FuncionarioController extends Controller
 
     public function show(Funcionario $funcionario)
     {
-        $aplicacoes = VacinasAplicadas::with('vacina')->where('funcionario_id', $funcionario->id)->orderBy('data_aplicacao')->get();
+        $aplicacoes = VacinasAplicadas::with('vacina')->where('funcionario_id', $funcionario->id)->orderBy('data_aplicacao', 'desc')->get();
         return view($this::ITEM . '.show', compact('funcionario', 'aplicacoes'));
     }
 

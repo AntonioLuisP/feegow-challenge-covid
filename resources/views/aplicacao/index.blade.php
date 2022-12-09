@@ -2,8 +2,9 @@
 
 @section('content_header')
     @include('utils.layout.contentHeader', [
-        'title' => 'Aplicações',
+        'title' => 'Vacinas Aplicadas',
         'items' => [
+            'Vacinas' => route('vacina.index'),
             'Aplicações' => null,
         ],
     ])

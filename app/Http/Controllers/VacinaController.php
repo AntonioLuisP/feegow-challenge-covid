@@ -30,7 +30,7 @@ class VacinaController extends Controller
 
     public function show(Vacina $vacina)
     {
-        $aplicacoes = VacinasAplicadas::with('vacina')->where('vacina_id', $vacina->id)->orderBy('data_aplicacao')->get();
+        $aplicacoes = VacinasAplicadas::with('vacina')->where('vacina_id', $vacina->id)->orderBy('data_aplicacao', 'desc')->get();
         return view($this::ITEM . '.show', compact('vacina', 'aplicacoes'));
     }
 
