@@ -28,6 +28,10 @@ DB_DATABASE=feegow_covid
 DB_USERNAME=postgres
 DB_PASSWORD=feegowcovid
 
+//chaves do pgadmin
+emal:feegow@gmail.com
+senha:feegowcovid
+
 -   `docker-compose run --rm npm install` (Instala as dependencias do frontEnd)
 -   `docker-compose run --rm npm run dev` (Compilacao das libs do frontEnd)
 
