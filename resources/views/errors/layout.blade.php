@@ -16,7 +16,7 @@
             </h4>
             <h4>
                 <a href="{{ route('home') }}">
-                    Volter para o início
+                    Voltar para o início
                 </a>
             </h4>
         </div>
