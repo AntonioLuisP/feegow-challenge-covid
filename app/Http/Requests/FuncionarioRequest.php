@@ -18,6 +18,7 @@ class FuncionarioRequest extends FormRequest
             'nome_completo' => ['required', 'string'],
             'cpf' => [
                 'required',
+                'cpf',
                 'string',
                 'size:11',
                 Rule::unique('funcionarios', 'cpf')->ignore($this->funcionario ?? null, 'id')
