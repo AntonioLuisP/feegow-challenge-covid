@@ -28,7 +28,7 @@ Sistema de cadastro de vacinação dos funcionários da feegow.
 
 ## Comandos
 
-Abaixo estão os comandos de criação do ambiente necessário para o projeto. Alguns podem demorar, porém siga a sequência e os execute um por vez.
+Abaixo estão os comandos de criação do ambiente necessário para o projeto. É necessário que você possua o docker instalado como pré-requisito. Após instalado é só rodar os comandos. Alguns podem demorar, porém siga a sequência e os execute um por vez.
 
 -   `docker-compose up -d` (Cria o container do docker)
 
@@ -45,12 +45,12 @@ aguardando os dados.
 
 //ACESSO AO BANCO LOCAL
 
-DB_CONNECTION=pgsql
-DB_HOST=postgres
-DB_PORT=5432
-DB_DATABASE=feegow_covid
-DB_USERNAME=postgres
-DB_PASSWORD=feegowcovid
+DB_CONNECTION=pgsql 
+DB_HOST=postgres 
+DB_PORT=5432 
+DB_DATABASE=feegow_covid 
+DB_USERNAME=postgres 
+DB_PASSWORD=feegowcovid 
 
 //chaves do pgadmin
 emal:feegow@gmail.com
