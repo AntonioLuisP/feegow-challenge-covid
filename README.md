@@ -4,7 +4,7 @@ Sistema de cadastro de vacinação dos funcionários da feegow.
 
 ## Comandos
 
-Abaixo estão os comandos de criação do ambiente necessário para o projeto. Siga a sequência e os execute um por vez.
+Abaixo estão os comandos de criação do ambiente necessário para o projeto. Alguns podem demorar, porém siga a sequência e os execute um por vez.
 
 -   `docker-compose up -d` (Cria o container do docker)
 
@@ -39,8 +39,3 @@ AGORA SERÁ A INSTALAÇÃO DO ADMINLTE, CASO EM ALGUM MOMENTO APAREÇA PEDINDO P
 ALGUM ARQUIVO, RECUSE.
 
 -   `docker-compose run --rm composer update` (Atualiza a dependecia do php via composer)
-
--   `docker-compose run --rm artisan storage:link` (Cria o link nas pastas das remessas)
-
--   `docker-compose run --rm app chmod -R 775 bootstrap storage` (Mudo a permisao)
--   `docker-compose run --rm app chown -R www-data.www-data bootstrap storage` (Coloco o nginx para se dono da pasta)
