@@ -2,6 +2,22 @@
 
 Sistema de cadastro de vacinação dos funcionários da feegow.
 
+> Status: Developed
+
+## Funcionalidades
+
++ Cadastro e gerenciamento de funcionários
++ Cadastro e gerenciamento de Vacinas
++ Cadastro e Gerenciamento de Vacinas aplicadas
+
+## Informações Sobre o projeto
+
+[Documento explicativo sobre o sistema](https://drive.google.com/file/d/1icuTBNYfd9hlV2Py31wV7hBhwB1DQk1J/view?usp=sharing)
+
+[Vídeo explicativo sobre como levantar o ambiente](https://drive.google.com/file/d/16Sop2WKomFRGhFBNbOymiYVS3bQtF1ub/view?usp=sharing)
+
+
+
 ## Comandos
 
 Abaixo estão os comandos de criação do ambiente necessário para o projeto. Alguns podem demorar, porém siga a sequência e os execute um por vez.
